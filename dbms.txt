@@ -1,0 +1,366 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database college;
+ERROR 1007 (HY000): Can't create database 'college'; database exists
+mysql> CREATE DATABASE college;
+ERROR 1007 (HY000): Can't create database 'college'; database exists
+mysql> create database school;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| hospital           |
+| information_schema |
+| mysql              |
+| newdatabase        |
+| performance_schema |
+| sakila             |
+| school             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> use school;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table student;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table student (usn varchar(10),student name varchar(20),marks int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name varchar(20),marks int)' at line 1
+mysql>  create table student (usn varchar(10),student name varchar(20),marks int(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name varchar(20),marks int(30))' at line 1
+mysql>  create table student (usn varchar(10),student_name varchar(20),marks int(30));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| student          |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| usn          | varchar(10) | YES  |     | NULL    |       |
+| student_name | varchar(20) | YES  |     | NULL    |       |
+| marks        | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values ('1bm23cs001', 'anjaneya',40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from student;
++------------+--------------+-------+
+| usn        | student_name | marks |
++------------+--------------+-------+
+| 1bm23cs001 | anjaneya     |    40 |
++------------+--------------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values ('1bm23cs002','amith',35);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++------------+--------------+-------+
+| usn        | student_name | marks |
++------------+--------------+-------+
+| 1bm23cs001 | anjaneya     |    40 |
+| 1bm23cs002 | amith        |    35 |
++------------+--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql>  create database insurance;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| hospital           |
+| information_schema |
+| insurance          |
+| mysql              |
+| newdatabase        |
+| performance_schema |
+| sakila             |
+| school             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> use insurance;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table person (driver_id varchar(10),name varchar(30),primary key (driver_id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_insurance |
++---------------------+
+| person              |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> desc person
+    -> ;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table persons (driver_id varchar(10),name varchar(30),address varchar(30),primary key (dr
+iver_id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc persons;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(30) | YES  |     | NULL    |       |
+| address   | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create tables car (reg_num varchar(10),model varchar(10),year int, primarykey(reg_num));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tables car (reg_num varchar(10),model varchar(10),year int, primarykey(reg_num))' at line 1
+mysql> create tables car (reg_num varchar(10),model varchar(10),year int, primary key(reg_num));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tables car (reg_num varchar(10),model varchar(10),year int, primary key(reg_num)' at line 1
+mysql> create tables car (reg_num varchar(10),model varchar(10),year int, primarykey(reg_num));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tables car (reg_num varchar(10),model varchar(10),year int, primarykey(reg_num))' at line 1
+mysql> create table car (reg_num varchar(10),model varchar(10),year int, primarykey(reg_num));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(reg_num))' at line 1
+mysql> create table car (reg_num varchar(10),model varchar(10),year int, primary key(reg_num));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table accident(report_num int, accident_date date,location varchar(20),primary key(report_num));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table own(driver_id varchar(10),reg_num varchar(10),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table owns(driver_id varchar(10),reg_num varchar(10), primary key (driver_id,reg_num),for
+eign key(driver_id)references persons(driver_id), foreign key (reg_num) references car(reg_num));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table participated(driver_id varchar(10),reg_num varchar(10),report_num int, damage_amount int, primary key(driver_id, reg_num,report_num),foreign key(driver_id) references persons(driver_id),
+    -> foreign key(reg_num)references car(reg_num),foreign key (report_num)references accident(report)
+       );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 2
+mysql>  create table participated(driver_id varchar(10),reg_num varchar(10),report_num int, damage_amount int, primary key(driver_id, reg_num,report_num),foreign key(driver_id) references persons(driver_id),foreign key(reg_num)references car(reg_num),foreign key (report_num)references accident(report_num));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select*from persons
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select*from person;
+Empty set (0.00 sec)
+
+mysql> show tables
+    -> ;
++---------------------+
+| Tables_in_insurance |
++---------------------+
+| accident            |
+| car                 |
+| owns                |
+| participated        |
+| person              |
+| persons             |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into accident values(11,'2024-01-01','mysore road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into accident values(12,'2024-02-02','south end circle');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into accident values(13,'2024-01-21','bull temple road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into accident values(14,'2024-02-17','mysore road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into accident values(15,'2024-03-05','kanakpira road');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show tables
+    -> ;
++---------------------+
+| Tables_in_insurance |
++---------------------+
+| accident            |
+| car                 |
+| owns                |
+| participated        |
+| person              |
+| persons             |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from person
+    -> ;
+Empty set (0.00 sec)
+
+mysql> select*from persons;
+Empty set (0.00 sec)
+
+mysql> select*from accident
+    -> ;
++------------+---------------+------------------+
+| report_num | accident_date | location         |
++------------+---------------+------------------+
+|         11 | 2024-01-01    | mysore road      |
+|         12 | 2024-02-02    | south end circle |
+|         13 | 2024-01-21    | bull temple road |
+|         14 | 2024-02-17    | mysore road      |
+|         15 | 2024-03-05    | kanakpira road   |
++------------+---------------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into participate values('A01','KA052250',11, 10000);
+ERROR 1146 (42S02): Table 'insurance.participate' doesn't exist
+mysql> insert into participated values('A01','KA052250',11, 10000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`insurance`.`participated`, CONSTRAINT `participated_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `persons` (`driver_id`))
+mysql> insert into participated values('A01','KA052250',11, 10000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`insurance`.`participated`, CONSTRAINT `participated_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `persons` (`driver_id`))
+mysql> desc participated
+    -> ;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| driver_id     | varchar(10) | NO   | PRI | NULL    |       |
+| reg_num       | varchar(10) | NO   | PRI | NULL    |       |
+| report_num    | int         | NO   | PRI | NULL    |       |
+| damage_amount | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc person;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc persons;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| driver_id | varchar(10) | NO   | PRI | NULL    |       |
+| name      | varchar(30) | YES  |     | NULL    |       |
+| address   | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> delete table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table' at line 1
+mysql> drop tables person;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc insurance
+    -> ;
+ERROR 1146 (42S02): Table 'insurance.insurance' doesn't exist
+mysql> show tables;
++---------------------+
+| Tables_in_insurance |
++---------------------+
+| accident            |
+| car                 |
+| owns                |
+| participated        |
+| persons             |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into participated values('A01','KA052250',11, 10000);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`insurance`.`participated`, CONSTRAINT `participated_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `persons` (`driver_id`))
+mysql> desc participated;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| driver_id     | varchar(10) | NO   | PRI | NULL    |       |
+| reg_num       | varchar(10) | NO   | PRI | NULL    |       |
+| report_num    | int         | NO   | PRI | NULL    |       |
+| damage_amount | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ^C
+mysql> ;
+ERROR:
+No query specified
+
+mysql> insert into car values('KA052250','indica', 1990);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('KA031181','lancer', 1957);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('KA095477','toyota', 1998);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('KA053408','honda', 2008);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into car values('KA041702','audi', 2005);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc car
+    -> ;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| reg_num | varchar(10) | NO   | PRI | NULL    |       |
+| model   | varchar(10) | YES  |     | NULL    |       |
+| year    | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from car;
++----------+--------+------+
+| reg_num  | model  | year |
++----------+--------+------+
+| KA031181 | lancer | 1957 |
+| KA041702 | audi   | 2005 |
+| KA052250 | indica | 1990 |
+| KA053408 | honda  | 2008 |
+| KA095477 | toyota | 1998 |
++----------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into car values('KA052250','indica', 1990);
